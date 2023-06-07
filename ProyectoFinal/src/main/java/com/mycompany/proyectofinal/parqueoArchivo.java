@@ -7,8 +7,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import parqueosP.datpsP;
-
 public class parqueoArchivo {
     public static void escribirArchivos(parqueos parqueo){
         try{
@@ -60,7 +58,7 @@ public class parqueoArchivo {
                 while ((linea = br.readLine())!= null){
                     String [] arreglo = linea.split("%");
                     if (arreglo[0].equalsIgnoreCase(parqueoBuscar) && !"false".equals(arreglo[2])){
-                        datpsP persona = new datpsP(arreglo[0], arreglo[1], arreglo[2], arreglo[3]);
+                        parqueos persona = new parqueos(arreglo[0], arreglo[1], arreglo[2], arreglo[3]);
                         System.out.println(persona.toString());
                         blnEncontrado=true;
                     }
@@ -88,7 +86,7 @@ public class parqueoArchivo {
                 while ((linea = br.readLine())!= null){
                     String [] arreglo = linea.split("%");
                     if (arreglo[2].equalsIgnoreCase(nitBuscar) && !"false".equals(arreglo[3])){
-                        datpsP persona = new datpsP(arreglo[0], arreglo[1], arreglo[2], arreglo[3]);
+                        parqueos persona = new parqueos(arreglo[0], arreglo[1], arreglo[2], arreglo[3]);
                         System.out.println(persona.toString());
                         blnEncontrado=true;
                     }
@@ -116,7 +114,7 @@ public class parqueoArchivo {
                 while ((linea = br.readLine())!= null){
                     String [] arreglo = linea.split("%");
                     if (arreglo[1].equalsIgnoreCase(placaBuscar) && !"false".equals(arreglo[3])){
-                        datpsP persona = new datpsP(arreglo[0], arreglo[1], arreglo[2], arreglo[3]);
+                        parqueos persona = new parqueos(arreglo[0], arreglo[1], arreglo[2], arreglo[3]);
                         System.out.println(persona.toString());
                         blnEncontrado=true;
                     }
@@ -144,7 +142,7 @@ public class parqueoArchivo {
                 while ((linea = br.readLine())!= null){
                     String [] arreglo = linea.split("%");
                     if (arreglo[3].equalsIgnoreCase(fechaBuscar) && !"false".equals(arreglo[3])){
-                        datpsP persona = new datpsP(arreglo[0], arreglo[1], arreglo[2], arreglo[3]);
+                        parqueos persona = new parqueos(arreglo[0], arreglo[1], arreglo[2], arreglo[3]);
                         System.out.println(persona.toString());
                         blnEncontrado=true;
                     }
