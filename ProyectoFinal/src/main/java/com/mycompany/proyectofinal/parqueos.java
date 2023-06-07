@@ -39,6 +39,6 @@ public class parqueos {
         
         @Override
         public String toString () {
-            return "\n__________Datos__________\nNumero de Parqueo: " + numeroParqueo + " \nNumero de Placa: " + numeroPlaca + " \n Numero de NIT: " + NIT + " \nFecha de Registro: " + fechaRegistro;
+            return "\n__________Datos__________\nNumero de Parqueo: " + numeroParqueo + " \nNumero de Placa: " + numeroPlaca + " \nNumero de NIT: " + NIT + " \nFecha de Registro: " + fechaRegistro;
         }
 }
