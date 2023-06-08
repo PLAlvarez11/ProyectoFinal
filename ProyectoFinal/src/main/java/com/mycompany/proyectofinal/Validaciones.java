@@ -58,4 +58,50 @@ public class Validaciones {
             
         return blnEncontrado;
     }
+    
+    public static boolean validarNumero(String numero){
+        boolean resp = false; 
+        int cant = numero.length();
+        char caracter;
+        
+        for(int i = 0; i < cant; i++){
+            caracter = numero.charAt(i);
+            
+            if(caracter == '0'){
+                resp = true;
+            }
+            else if(caracter == '1'){
+                resp = true;
+            }
+            else if(caracter == '2'){
+                resp = true;
+            }
+            else if(caracter == '3'){
+                resp = true;
+            }
+            else if(caracter == '4'){
+                resp = true;
+            }
+            else if(caracter  == '5'){
+                resp = true;
+            }
+            else if(caracter == '6'){
+                resp = true;
+            }
+            else if(caracter == '7'){
+                resp = true;
+            }
+            else if(caracter == '8'){
+                resp = true;
+            }
+            else if(caracter == '9'){
+                resp = true;
+            }
+            else{
+                resp = false;
+                break;
+            }
+        }
+        return resp;
+    }
 }

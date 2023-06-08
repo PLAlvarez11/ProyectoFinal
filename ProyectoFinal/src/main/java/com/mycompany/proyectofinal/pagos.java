@@ -2,15 +2,15 @@ package com.mycompany.proyectofinal;
 
 public class pagos {
     //Atributo
-    private String numeroTarjeta;
+    private String numeroParqueo;
     private int tipoPago;
     private int monto;
     private int numAutorizacion;
     private String fechaPago;
     
     //Constructor
-    public pagos(String numeroTarjeta, int tipoPago, int monto, int numAutorizacion, String fechaPago){
-        this.numeroTarjeta = numeroTarjeta;
+    public pagos(String numeroParqueo, int tipoPago, int monto, int numAutorizacion, String fechaPago){
+        this.numeroParqueo = numeroParqueo;
         this.tipoPago = tipoPago;
         this.monto = monto;
         this.numAutorizacion = numAutorizacion;
@@ -18,8 +18,8 @@ public class pagos {
     }
     
     //Getters
-    public String getNumeroTarjeta(){
-        return numeroTarjeta;
+    public String getNumeroParqueo(){
+        return numeroParqueo;
     }
     
     public int getTipoPago(){
@@ -39,8 +39,8 @@ public class pagos {
     }
     
     //Setters
-    public void setNumeroTarjeta(String numeroTarjeta){
-        this.numeroTarjeta = numeroTarjeta;
+    public void setNumeroParqueo(String numeroParqueo){
+        this.numeroParqueo = numeroParqueo;
     }
     
     public void setMonto(int monto){
@@ -61,6 +61,6 @@ public class pagos {
     
     @Override
     public String toString () {
-        return "Numero de autorizacion: " + Integer.toString(numAutorizacion) + " pago realizado con " + tipoPago + " con un monto de " + monto + " con el numero de tarjeta " + numeroTarjeta + " en la fecha " + fechaPago ;                               
+        return "Numero de autorizacion: " + Integer.toString(numAutorizacion) + " pago realizado con " + tipoPago + " con un monto de " + monto + " con el numero de parqueo " + numeroParqueo + " en la fecha " + fechaPago ;                               
     }
 }

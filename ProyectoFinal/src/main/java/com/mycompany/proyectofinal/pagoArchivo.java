@@ -15,11 +15,11 @@ public class pagoArchivo {
                 fw = new FileWriter(f, true);
                 bw = new BufferedWriter(fw);
                 bw.newLine();
-                bw.write(pago.getNumeroTarjeta()+"%"+pago.getTipoPago()+"%"+pago.getMonto()+"%"+pago.getNumAutorizacion()+"%"+pago.getFechaPago());                
+                bw.write(pago.getNumeroParqueo()+"%"+pago.getTipoPago()+"%"+pago.getMonto()+"%"+pago.getNumAutorizacion()+"%"+pago.getFechaPago());                
             } else {
                 fw = new FileWriter(f);
                 bw = new BufferedWriter(fw);
-                bw.write(pago.getNumeroTarjeta()+"%"+pago.getTipoPago()+"%"+pago.getMonto()+"%"+pago.getNumAutorizacion()+"%"+pago.getFechaPago());                              
+                bw.write(pago.getNumeroParqueo()+"%"+pago.getTipoPago()+"%"+pago.getMonto()+"%"+pago.getNumAutorizacion()+"%"+pago.getFechaPago());                              
             }
             bw.close();
             fw.close();

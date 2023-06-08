@@ -22,7 +22,7 @@ public class pagoMenu {
         
         switch(opcion){
             case 1:
-               
+               realizarPago();
                break;
             
             case 2:
@@ -31,5 +31,17 @@ public class pagoMenu {
             case 3:
                break;
         }
+    }
+    
+    private static void realizarPago(){
+        Scanner sc = new Scanner(System.in);
+        Boolean isApto = false;             
+        do{
+            System.out.println("Ingrese el parqueo que el cual desea realizar pago");
+            String numParqueo = sc.next();
+            isApto = Validaciones.validarNumero(numParqueo);
+        }while(isApto == false);
+        
+        
     }
 }
