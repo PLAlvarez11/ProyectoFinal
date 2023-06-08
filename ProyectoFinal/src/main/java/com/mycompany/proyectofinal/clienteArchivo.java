@@ -74,69 +74,166 @@ public class clienteArchivo {
             System.out.println("Error de E/S" + e);
         }
     }
-    public void eliminarLogico (String nombreEliminar){
+    static void eliminarRegistro(String eliminar) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Ingrese el CUI del cliente a eliminar:");
+        String cui = sc.nextLine();
         try {
-                File f = new File("clientes.txt");
-                if (f.exists()){
-                    FileReader fr = new FileReader(f);
-                    BufferedReader br = new BufferedReader (fr) ;
-                    String linea;
-                    int numeroLineas=0;
-                    
-                    while((linea = br.readLine()) !=null){
-                        numeroLineas++;
-                    }
-                    String contacto[] = new String[numeroLineas];
-                    
-                    br.close();
-                    fr.close();
-                    br = new BufferedReader(new FileReader(f));
-                    int i=0;
-                    
-                    while ((linea=br.readLine())!=null){
-                        contacto[i] = linea;
-                        i++;
-                    }
-                    
-                    br.close(); 
-                    fr.close();
-                    FileWriter fw = new FileWriter(f);
-                    BufferedWriter bw = new BufferedWriter (fw);
-                    boolean eliminado = false;
-                    boolean primerlinea = true;
-                    
-                    for (int j = 0; j < contacto.length; j++){
-                        String nuevalinea[] = contacto[j].split ("%");
-                        if (nuevalinea[0].equalsIgnoreCase (nombreEliminar) ){
-                            String nuevaLinea =  contacto[j].replace("1", "2");
-                            bw.newLine();
-                            bw.write(nuevaLinea);
-                            eliminado = true;
-                            System.out.println("Registro eliminado!");
+            File f = new File("clientes.txt");
+            FileWriter fw = new FileWriter(f);
+            boolean encontrado;
+            try (BufferedWriter bw = new BufferedWriter(fw)) {
+                FileReader fr = new FileReader(eliminar);
+                try (BufferedReader br = new BufferedReader(fr)) {
+                    String line = "";
+                    encontrado = false;
+                    while ((line = br.readLine()) != null) {
+                        String[] fields = line.split("%");
+                        String nuevalinea = "";
+                        if (fields[1].equals(cui)) {
+                            encontrado = true;
+                            nuevalinea = fields[9].replace("1","2");
                         } else {
-                            if (primerlinea == true){
-                                bw.write (contacto[j]);
-                                primerlinea = false;
-                            } else{
-                                bw.newLine();
-                                bw.write (contacto [j]);
-                            }
+                            bw.write(nuevalinea);
+                            bw.newLine();
                         }
                     }
-    
-                    if (eliminado==false){
-                        System.out.println("No se encontro registro.");
-                    }
-                    bw.close();
-                    fw.close();
-    
-                } else{
-                    System.out.println("No hay registros que eliminar.");
                 }
-            } 
-            
-            catch (Exception e){
-                System.out.println("Error de E/S "+ e);   
             }
+            if (!encontrado) {
+                System.out.println("No se encontro ningun registro con el CUI especificado.");
+            } else {
+                System.out.println("El registro se elimino correctamente.");
+            }
+
+        } catch (IOException e) {
+            System.out.println("Error: " + e.getMessage());
         }
+    }
+    static void cambiar(String cambiardato) {
+        Scanner input = new Scanner(System.in);
+        String datoacambiar = "";
+        String newdato = "";
+        System.out.println("Ingrese el dato del cliente que desea editar");
+        System.out.println("Presione 1 para cambiar nombre");
+        System.out.println("Presione 2 para cambiar apellido");
+        System.out.println("Presione 3 para cambiar numero de telefono");
+        System.out.println("Presione 4 para cambiar direccion del domicilio");
+        System.out.println("Presione 5 para cambiar trabajo");
+        System.out.println("Presione 6 para cambiar direccion del trabajo");
+        System.out.println("Presione 7 para cambiar cui");
+        System.out.println("Presione 8 para cambiar nit");
+        String opc1 = sc.next();
+        int opc = Integer.parseInt(opc1);
+        while(opc<1 || opc>8){
+            System.out.println("Opcion no valida, intentelo de nuevo");
+            opc1 = sc.next();
+        }
+        switch(opc){
+            case 1:
+            System.out.print("Porfavor escriba el nombre a cambiar");
+            datoacambiar = sc.next();
+            System.out.println("Porfavor escriba el nuevo nombre");
+            newdato = sc.next();
+            int x = 6;
+            break;
+            case 2:
+            System.out.print("Porfavor escriba el apellido a cambiar");
+            datoacambiar = sc.next();
+            System.out.println("Porfavor escriba el nuevo apellido");
+            newdato = sc.next();
+            x = 7;
+            break;
+            case 3:
+            System.out.print("Porfavor escriba el numero telefonico a cambiar");
+            datoacambiar = sc.next();
+            System.out.println("Porfavor escriba el nuevo numero telefonico");
+            newdato = sc.next();
+            x = 8;
+            break;
+            case 4:
+            System.out.print("Porfavor escriba el direccion del domicilio a cambiar");
+            datoacambiar = sc.next();
+            System.out.println("Porfavor escriba el nuevo domicilio");
+            newdato = sc.next();
+            x = 2;
+            break;
+            case 5:
+            System.out.print("Porfavor escriba el trabajo a cambiar");
+            datoacambiar = sc.next();
+            System.out.println("Porfavor escriba el nuevo trabajo");
+            newdato = sc.next();
+            x = 3;
+            break;
+            case 6:
+            System.out.print("Porfavor escriba el direccion del trabajo a cambiar");
+            datoacambiar = sc.next();
+            System.out.println("Porfavor escriba el nuevo domicilio laboral");
+            newdato = sc.next();
+            x = 4;
+            break;
+            case 7:
+            System.out.print("Porfavor escriba el cui a cambiar");
+            datoacambiar = sc.next();
+            System.out.println("Porfavor escriba el nuevo cui");
+            newdato = sc.next();
+            x = 0;
+            break;
+            case 8:
+            System.out.print("Porfavor escriba el nit a cambiar");
+            datoacambiar = sc.next();
+            System.out.println("Porfavor escriba el nuevo nit");
+            newdato = sc.next();
+            x = 1;
+            break;
+        }
+        try {
+            File f = new File("clientes.txt");
+            FileWriter fw = new FileWriter(f);
+            boolean encontrado;
+            int numerodelineas = 0;
+            try (BufferedWriter bw = new BufferedWriter(fw)) {
+                FileReader fr = new FileReader(f);
+                try (BufferedReader br = new BufferedReader(fr)) {
+                    String line = "";
+                    encontrado = false;
+                    while((line = br.readLine() != null)){
+                        numerodelineas++;
+                    }
+                    String arreglo[] = new String[numerodelineas];
+                    int i = 0;
+                    String nuevalinea = "";
+                    while((linea = br.readLine())!=null){
+                        arreglo[i] = line;
+                        i++;
+                    }
+                    for (int j = 0; j < arreglo.lenght; j++){
+                        String nuevodato[] = arreglo[j].split("%");
+                        if (nuevodato[x].equalsIgnoreCase(datoacambiar)){
+                            nuevalinea = arreglo[j].replace(datoacambiar, newdato);
+                            bw.newLine();
+                            bw.write(nuevalinea);
+                            encontrado = true;
+                            System.out.println("Cambio hecho.");
+                        } else {
+                            bw.write(nuevalinea);
+                            bw.newLine();
+                        }
+                    }
+                }
+            }
+            br.close();
+            fr.close();
+            bw.close();
+            fw.close();
+            if (!encontrado) {
+                System.out.println("No se encontro ningun registro con el dato especificado.");
+            } else {
+                System.out.println("El registro se cambio correctamente.");
+            }
+
+        } catch (IOException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
 }

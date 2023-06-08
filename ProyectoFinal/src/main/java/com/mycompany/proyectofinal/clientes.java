@@ -3,19 +3,21 @@ package com.mycompany.proyectofinal;
 public class clientes{
     private String cui;
     private int nit;
-    private String direccion;
+    private String direccion1;
     private String trabajo;
+    private String direccion2;
     private String fech;
     private String name;
     private String ape;
     private int numtel;
     private int estado;
 
-    public clientes(String cui, int nit, String direccion, String trabajo, String fech, String name, String ape, int numtel, int estado){
+    public clientes(String cui, int nit, String direccion1, String trabajo, String direccion2, String fech, String name, String ape, int numtel, int estado){
         this.cui=cui;
         this.nit=nit;
-        this.direccion=direccion;
+        this.direccion1=direccion1;
         this.trabajo=trabajo;
+        this.direccion2 = direccion2;
         this.fech=fech;
         this.name=name;
         this.ape=ape;
@@ -34,17 +36,23 @@ public class clientes{
     public int GetNit(){
         return this.nit;
     }
-    public void SetDireccion(String direccion){
-        this.direccion=direccion;
+    public void SetDireccion1(String direccion1){
+        this.direccion=direccion1;
     }
-    public String GetDireccion(){
-        return this.direccion;
+    public String GetDireccion1(){
+        return this.direccion1;
     }
     public void SetTrabajo(String trabajo){
         this.trabajo=trabajo;
     }
     public String GetTrabajo(){
         return this.trabajo;
+    }
+    public void SetDireccion2(String direccion2){
+        this.direccion2=direccion2;
+    }
+    public String GetDireccion2(){
+        return this.direccion2;
     }
     public void SetFech(String fech){
         this.fech=fech;
@@ -79,6 +87,6 @@ public class clientes{
     
     @Override
     public String toString () {
-        return "Cliente: "+name+" "+ape+"nacido en "+fech+" con cui "+cui+" y nit "+nit+" con direccion "+direccion+" que tiene el oficio de "+trabajo+" aceptó que podamos contactarlo al "+numtel+" es de estado " +estado+".";
+        return "Cliente: "+name+" "+ape+"nacido en "+fech+" con cui "+cui+" y nit "+nit+" con direccion "+direccion1+" que tiene el oficio de "+trabajo+" ubicado en "+direccion2+"aceptó que podamos contactarlo al "+numtel+" es de estado " +estado+".";
     }
 }

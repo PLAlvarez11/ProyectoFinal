@@ -25,14 +25,15 @@ public class clienteMenu {
             case 1:
                 agregarCliente();
                break;
-            
             case 2:
+            System.out.println("Ingrese el cliente que desea buscar");
+            clienteArchivo.buscar();
                break;
-               
             case 3:
+            clienteArchivo.cambiar();
                break;
-               
             case 4:
+            clienteArchivo.eliminarRegistro();
                break;
         }
     }
@@ -146,7 +147,7 @@ public class clienteMenu {
         else if(existsCui == true){
         
         }else{
-            clientes cli = new clientes(cui, nit, direccion1, trabajo, fech, name, ape, numtel, estado);
+            clientes cli = new clientes(cui, nit, direccion1, trabajo, direccion2, fech, name, ape, numtel, estado);
             clienteArchivo.escribir(cli);
         }
         menuCliente();
