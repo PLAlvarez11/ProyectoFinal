@@ -74,4 +74,69 @@ public class clienteArchivo {
             System.out.println("Error de E/S" + e);
         }
     }
+    public void eliminarLogico (String nombreEliminar){
+        try {
+                File f = new File("clientes.txt");
+                if (f.exists()){
+                    FileReader fr = new FileReader(f);
+                    BufferedReader br = new BufferedReader (fr) ;
+                    String linea;
+                    int numeroLineas=0;
+                    
+                    while((linea = br.readLine()) !=null){
+                        numeroLineas++;
+                    }
+                    String contacto[] = new String[numeroLineas];
+                    
+                    br.close();
+                    fr.close();
+                    br = new BufferedReader(new FileReader(f));
+                    int i=0;
+                    
+                    while ((linea=br.readLine())!=null){
+                        contacto[i] = linea;
+                        i++;
+                    }
+                    
+                    br.close(); 
+                    fr.close();
+                    FileWriter fw = new FileWriter(f);
+                    BufferedWriter bw = new BufferedWriter (fw);
+                    boolean eliminado = false;
+                    boolean primerlinea = true;
+                    
+                    for (int j = 0; j < contacto.length; j++){
+                        String nuevalinea[] = contacto[j].split ("%");
+                        if (nuevalinea[0].equalsIgnoreCase (nombreEliminar) ){
+                            String nuevaLinea =  contacto[j].replace("1", "2");
+                            bw.newLine();
+                            bw.write(nuevaLinea);
+                            eliminado = true;
+                            System.out.println("Registro eliminado!");
+                        } else {
+                            if (primerlinea == true){
+                                bw.write (contacto[j]);
+                                primerlinea = false;
+                            } else{
+                                bw.newLine();
+                                bw.write (contacto [j]);
+                            }
+                        }
+                    }
+    
+                    if (eliminado==false){
+                        System.out.println("No se encontro registro.");
+                    }
+                    bw.close();
+                    fw.close();
+    
+                } else{
+                    System.out.println("No hay registros que eliminar.");
+                }
+            } 
+            
+            catch (Exception e){
+                System.out.println("Error de E/S "+ e);   
+            }
+        }
 }
