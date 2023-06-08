@@ -132,9 +132,15 @@ public class clienteMenu {
         existsCui = Validaciones.buscarcui(cui);
         existsNit = Validaciones.buscarNit(sNit);
         
-        clientes cli = new clientes(cui, nit, direccion, trabajo, fech, name, ape, numtel, estado);
-        clienteArchivo.escribir(cli);
+        if(existsNit == true ){
+            
+        }
+        else if(existsCui == true){
         
+        }else{
+            clientes cli = new clientes(cui, nit, direccion, trabajo, fech, name, ape, numtel, estado);
+            clienteArchivo.escribir(cli);
+        }
         menuCliente();
     }
 
