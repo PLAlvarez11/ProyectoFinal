@@ -7,14 +7,16 @@ public class pagos {
     private int monto;
     private int numAutorizacion;
     private String fechaPago;
+    private String NIT;
     
     //Constructor
-    public pagos(String numeroParqueo, int tipoPago, int monto, int numAutorizacion, String fechaPago){
+    public pagos(String numeroParqueo, int tipoPago, int monto, int numAutorizacion, String fechaPago, String NIT){
         this.numeroParqueo = numeroParqueo;
         this.tipoPago = tipoPago;
         this.monto = monto;
         this.numAutorizacion = numAutorizacion;
         this.fechaPago = fechaPago;
+        this.NIT = NIT;
     }
     
     //Getters
@@ -38,6 +40,10 @@ public class pagos {
         return fechaPago;
     }
     
+    public String getNIT(){
+        return NIT;
+    }
+    
     //Setters
     public void setNumeroParqueo(String numeroParqueo){
         this.numeroParqueo = numeroParqueo;
@@ -57,6 +63,10 @@ public class pagos {
     
     public void setFecha(String fecha){
         this.fechaPago = fecha;
+    }
+    
+    public void setNIT(String NIT){
+        this.fechaPago = NIT;
     }
     
     @Override

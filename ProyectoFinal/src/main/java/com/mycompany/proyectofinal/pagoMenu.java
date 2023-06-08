@@ -49,7 +49,7 @@ public class pagoMenu {
             if(isApto){
                 parqueo = Integer.parseInt(numParqueo);
             }
-        }while((parqueo<0 || parqueo>125) || isApto == false);
+        }while((parqueo<0 || parqueo>155) || isApto == false);
         isApto = false;
         
         do{
@@ -69,7 +69,7 @@ public class pagoMenu {
         
         fecha =  Validaciones.obtenerFecha();
         
-        pagos pago = new pagos(numParqueo, tipoPago, Integer.parseInt(monto), 1, fecha);
+        pagos pago = new pagos(numParqueo, tipoPago, Integer.parseInt(monto), 1, fecha, "NIT");
         pagoArchivo.escribirArchivos(pago);
     }
    
