@@ -78,7 +78,7 @@ public class clienteMenu {
     
     int fech11 = 0;
     IsApto = false;
-    while((fech11<1 || fech11>31) && IsApto == false){
+    while((fech11<1 || fech11>31) || (IsApto == false)){
         System.out.println("Porfavor ingrese el dia en que nació el cliente");
         fech1= entrada.next();
         IsApto = Validaciones.validarNumero(fech1);
@@ -89,7 +89,7 @@ public class clienteMenu {
     
     int fech22 = 0;
     IsApto = false;
-    while((fech22<1 || fech22>12) && IsApto == false){ 
+    while((fech22<1 || fech22>12) || IsApto == false){ 
         System.out.println("Porfavor ingrese el mes en nació el cliente");
         fech2 = entrada.next();
         IsApto = Validaciones.validarNumero(fech2);
@@ -100,7 +100,7 @@ public class clienteMenu {
     
     int fech33 = 0;
     IsApto = false;
-    while((fech33>2008 || fech33<1823) && IsApto == false){ 
+    while((fech33>2008 || fech33<1823) || IsApto == false){ 
         System.out.println("Porfavor ingrese el año en que nació el cliente");
         fech3 = entrada.next();
         IsApto = Validaciones.validarNumero(fech3);
