@@ -1,7 +1,7 @@
 package com.mycompany.proyectofinal;
 
 public class clientes{
-    private int cui;
+    private String cui;
     private int nit;
     private String direccion;
     private String trabajo;
@@ -11,7 +11,7 @@ public class clientes{
     private int numtel;
     private int estado;
 
-    public clientes(int cui, int nit, String direccion, String trabajo, String fech, String name, String ape, int numtel, int estado){
+    public clientes(String cui, int nit, String direccion, String trabajo, String fech, String name, String ape, int numtel, int estado){
         this.cui=cui;
         this.nit=nit;
         this.direccion=direccion;
@@ -22,10 +22,10 @@ public class clientes{
         this.numtel=numtel;
         this.estado=estado;
     }
-    public void SetCui(int cui){
+    public void SetCui(String cui){
         this.cui=cui;
     }
-    public int GetCui(){
+    public String GetCui(){
         return this.cui;
     }
     public void SetNit(int nit){
@@ -72,6 +72,9 @@ public class clientes{
     }
     public void SetEstado(int estado){
         this.estado=estado;
+    }
+     public int GetEstado(){
+        return this.estado;
     }
     
     @Override

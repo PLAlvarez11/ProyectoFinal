@@ -48,11 +48,12 @@ public class clienteMenu {
     String ape1;
     String ape2;
     String fech;
-    int cui = 0;
+    String cui = "";
     int nit = 0;
     int estado = 1;
     String trabajo = "";
     Boolean IsApto = false;
+    String sNit = "";
             
     Scanner entrada = new Scanner(System.in);
     System.out.println("Porfavor ingrese el primer nombre del cliente");
@@ -66,11 +67,9 @@ public class clienteMenu {
     ape2 = entrada.next();
     String ape = ape1+" "+ape2;
     
-    while(IsApto == false){
+    while(cui.length() != 13){
         System.out.println("porfavor ingrese el CUI del cliente");
-        cui = entrada.nextInt();
-        String sCui = String.valueOf(cui);
-        IsApto = Validaciones.buscarcui(sCui);
+        cui = entrada.next();
     }
     
     IsApto = false;
@@ -99,15 +98,16 @@ public class clienteMenu {
         System.out.println("Porfavor intentelo nuevamente");
         fech3= entrada.nextInt();
     }
-    fech1 = toString(fech1);
-    fech2 = toString(fech2);
-    fech3 = toString(fech3);
-    fech = fech1+"/"+fech2+"/"+fech3;
+    String sfech1 = Integer.toString(fech1);
+    String sfech2 = Integer.toString(fech2);
+    String sfech3 = Integer.toString(fech3);
+    fech = sfech1+"/"+sfech2+"/"+sfech3;
     
     System.out.println("Porfavor ingrese la dirección del domicilio del cliente");
-    direccion = entrada.next();
+    entrada.nextLine();
+    direccion = entrada.nextLine();
     System.out.println("porfavor ingrese el trabajo al que se dedica el cliente");
-    trabajo = entrada.next();
+    trabajo = entrada.nextLine();
     
     while(IsApto == false){
         System.out.println("Porfavor ingrese el numero de telefono del cliente");
@@ -117,18 +117,25 @@ public class clienteMenu {
             numtel = Integer.parseInt(sNumtel);
         }
     }
-    
+    IsApto = false;
+            
     while(IsApto == false){
         System.out.println("Porfavor ingrese el NIT del cliente");
-        String sNit = entrada.next();
+        sNit = entrada.next();
         if(sNit.length() == 9){
             IsApto = true;
             nit = Integer.parseInt(sNit);
         }
     }
-    
+        Boolean existsCui = false;
+        Boolean existsNit = false;
+        existsCui = Validaciones.buscarcui(cui);
+        existsNit = Validaciones.buscarNit(sNit);
+        
         clientes cli = new clientes(cui, nit, direccion, trabajo, fech, name, ape, numtel, estado);
         clienteArchivo.escribir(cli);
+        
+        menuCliente();
     }
 
     private static int toString(int fech1) {

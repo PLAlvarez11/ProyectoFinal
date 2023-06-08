@@ -16,11 +16,11 @@ public class clienteArchivo {
                 fw = new FileWriter(f, true);
                 bw = new BufferedWriter(fw);
                 bw.newLine();
-                bw.write(cliente.GetName()+"%"+cliente.GetApe()+"%"+cliente.GetCui()+"%"+cliente.GetNum());                
+                bw.write(cliente.GetCui()+"%"+cliente.GetNit()+"%"+cliente.GetDireccion()+"%"+cliente.GetTrabajo()+"%"+cliente.GetFech()+"%"+cliente.GetName()+"%"+cliente.GetApe()+"%"+cliente.GetNum()+"%"+cliente.GetEstado());                
             } else {
                 fw = new FileWriter(f);
                 bw = new BufferedWriter(fw);
-                bw.write(cliente.GetName()+"%"+cliente.GetApe()+"%"+cliente.GetCui()+"%"+cliente.GetNum());                               
+                bw.write(cliente.GetCui()+"%"+cliente.GetNit()+"%"+cliente.GetDireccion()+"%"+cliente.GetTrabajo()+"%"+cliente.GetFech()+"%"+cliente.GetName()+"%"+cliente.GetApe()+"%"+cliente.GetNum()+"%"+cliente.GetEstado());                                
             }
             bw.close();
             fw.close();
@@ -37,7 +37,7 @@ public class clienteArchivo {
                 String linea;
                 while((linea=br.readLine())!=null){
                     String[] arreglo = linea.split("%");
-                    clientes cliente = new clientes(Integer.parseInt(arreglo[0]), Integer.parseInt(arreglo[1]), arreglo[2], arreglo[3], arreglo[4], arreglo[5], arreglo[6], Integer.parseInt(arreglo[7]), Integer.parseInt(arreglo[8]));
+                    clientes cliente = new clientes(arreglo[0], Integer.parseInt(arreglo[1]), arreglo[2], arreglo[3], arreglo[4], arreglo[5], arreglo[6], Integer.parseInt(arreglo[7]), Integer.parseInt(arreglo[8]));
                     System.out.println(cliente.toString());
                 }
             }
@@ -57,7 +57,7 @@ public class clienteArchivo {
                 while ((linea=br.readLine())!=null){
                     String [] arreglo = linea.split("%");
                     if (arreglo[0].equalsIgnoreCase(nombreBuscar)){
-                        clientes cliente = new clientes(Integer.parseInt(arreglo[0]), Integer.parseInt(arreglo[1]), arreglo[2], arreglo[3], arreglo[4], arreglo[5], arreglo[6], Integer.parseInt(arreglo[7]), Integer.parseInt(arreglo[8]));
+                        clientes cliente = new clientes(arreglo[0], Integer.parseInt(arreglo[1]), arreglo[2], arreglo[3], arreglo[4], arreglo[5], arreglo[6], Integer.parseInt(arreglo[7]), Integer.parseInt(arreglo[8]));
                         System.out.println(cliente.toString());
                         blnEncontrado=true;
                     }
