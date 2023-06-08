@@ -3,6 +3,10 @@ package com.mycompany.proyectofinal;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 public class Validaciones {
     
@@ -104,4 +108,10 @@ public class Validaciones {
         }
         return resp;
     }
+    
+    public static String obtenerFecha(){
+        Date date = Calendar.getInstance().getTime();  
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy"); 
+        return dateFormat.format(date);
+    } 
 }
