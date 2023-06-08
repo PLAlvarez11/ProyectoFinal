@@ -35,13 +35,32 @@ public class pagoMenu {
     
     private static void realizarPago(){
         Scanner sc = new Scanner(System.in);
-        Boolean isApto = false;             
+        Boolean isApto = false;   
+        String numParqueo;
+        String monto;
+        int tipoPago;
+                
         do{
             System.out.println("Ingrese el parqueo que el cual desea realizar pago");
-            String numParqueo = sc.next();
+            numParqueo = sc.next();
             isApto = Validaciones.validarNumero(numParqueo);
         }while(isApto == false);
+        isApto = false;
         
+        do{
+            System.out.println("Tipo de Pago");
+            System.out.println("Deposito en cuenta monetaria.....1");
+            System.out.println("Pago con tarjeta.................2");
+            System.out.println("Transferencia Bancaria...........3");
+            tipoPago = sc.nextInt();
+        }while(tipoPago > 3 || tipoPago < 0);
         
+        do{
+            System.out.println("Ingrese el monto de pago a realizar");
+            monto = sc.next();
+            isApto = Validaciones.validarNumero(monto);
+        }while(isApto == false);
+        isApto = false;
     }
+   
 }

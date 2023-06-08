@@ -38,23 +38,24 @@ public class clienteMenu {
     }
     
     public static void agregarCliente (){
-    String fech1;
-    String fech2;
-    String fech3;
+    String fech1 = "";
+    String fech2= "";
+    String fech3= "";
     int numtel = 0;
-    String direccion1;
-    String direccion2;
-    String name1;
-    String name2;
-    String ape1;
-    String ape2;
-    String fech;
+    String direccion1= "";
+    String direccion2= "";
+    String name1= "";
+    String name2= "";
+    String ape1= "";
+    String ape2= "";
+    String fech= "";
     String cui = "";
     int nit = 0;
     int estado = 1;
     String trabajo = "";
     Boolean IsApto = false;
     String sNit = "";
+    String sNumtel= "";
             
     Scanner entrada = new Scanner(System.in);
     System.out.println("Porfavor ingrese el primer nombre del cliente");
@@ -68,200 +69,47 @@ public class clienteMenu {
     ape2 = entrada.next();
     String ape = ape1+" "+ape2;
     
-    while(cui.length() != 13){
+    IsApto = false;
+    while(cui.length() != 13 && IsApto == false){
         System.out.println("porfavor ingrese el CUI del cliente");
         cui = entrada.next();
+        IsApto = Validaciones.validarNumero(cui);        
     }
-    boolean resp = false;
-    int cant = cui.length();
-    for(int i = 0; i < cant; i++){
-        String caracter = cui.charAt(i);
-        
-        if(caracter == '0'){
-            resp = true;
-        }
-        else if(caracter == '1'){
-            resp = true;
-        }
-        else if(caracter == '2'){
-            resp = true;
-        }
-        else if(caracter == '3'){
-            resp = true;
-        }
-        else if(caracter == '4'){
-            resp = true;
-        }
-        else if(caracter  == '5'){
-            resp = true;
-        }
-        else if(caracter == '6'){
-            resp = true;
-        }
-        else if(caracter == '7'){
-            resp = true;
-        }
-        else if(caracter == '8'){
-            resp = true;
-        }
-        else if(caracter == '9'){
-            resp = true;
-        }
-        else{
-            resp = false;
-            break;
-        }
-    }
-    IsApto = false;
     
-    System.out.println("Porfavor ingrese el dia en que nació el cliente");
-    fech1 = entrada.next();
-            boolean resp1 = false;
-        int cant1 = fech1.length();
-        for(int i = 0; i < cant1; i++){
-            String caracter = fech1.charAt(i);
-            
-            if(caracter == '0'){
-                resp = true;
-            }
-            else if(caracter == '1'){
-                resp = true;
-            }
-            else if(caracter == '2'){
-                resp = true;
-            }
-            else if(caracter == '3'){
-                resp = true;
-            }
-            else if(caracter == '4'){
-                resp = true;
-            }
-            else if(caracter  == '5'){
-                resp = true;
-            }
-            else if(caracter == '6'){
-                resp = true;
-            }
-            else if(caracter == '7'){
-                resp = true;
-            }
-            else if(caracter == '8'){
-                resp = true;
-            }
-            else if(caracter == '9'){
-                resp = true;
-            }
-            else{
-                resp = false;
-                break;
-            }
-        }
-        int fech11 = String.valueOf(fech1);
-        while(fech11<1 || fech11>31){
-            System.out.println("el dia debe ingresarse en numeros del 1 al 31");
-            System.out.println("Porfavor intentelo nuevamente");
-            fech1= entrada.next();
-        }
-    System.out.println("Porfavor ingrese el mes en nació el cliente");
-    fech2 = entrada.nextInt();
-    boolean resp2 = false;
-    int cant2 = fech2.length();
-    for(int i = 0; i < cant2; i++){
-        String caracter = fech2.charAt(i);
-        
-        if(caracter == '0'){
-            resp = true;
-        }
-        else if(caracter == '1'){
-            resp = true;
-        }
-        else if(caracter == '2'){
-            resp = true;
-        }
-        else if(caracter == '3'){
-            resp = true;
-        }
-        else if(caracter == '4'){
-            resp = true;
-        }
-        else if(caracter  == '5'){
-            resp = true;
-        }
-        else if(caracter == '6'){
-            resp = true;
-        }
-        else if(caracter == '7'){
-            resp = true;
-        }
-        else if(caracter == '8'){
-            resp = true;
-        }
-        else if(caracter == '9'){
-            resp = true;
-        }
-        else{
-            resp = false;
-            break;
+    int fech11 = 0;
+    IsApto = false;
+    while((fech11<1 || fech11>31) && IsApto == false){
+        System.out.println("Porfavor ingrese el dia en que nació el cliente");
+        fech1= entrada.next();
+        IsApto = Validaciones.validarNumero(fech1);
+        if (IsApto){
+            fech11 = Integer.parseInt(fech1);
         }
     }
-    int fech22 = String.valueOf(fech2);
-    while(fech22<1 || fech22>12){
-        System.out.println("el mes debe ser desde 1 a 12");
-        System.out.println("Porfavor intentelo nuevamente");
-        fech2= entrada.nextInt();
-    }
-    System.out.println("Porfavor ingrese el año en que nació el cliente");
-    fech3 = entrada.nextInt();
-    boolean resp3 = false;
-    int cant3 = fech3.length();
-    for(int i = 0; i < cant3; i++){
-        String caracter = fech3.charAt(i);
-        
-        if(caracter == '0'){
-            resp = true;
+    
+    int fech22 = 0;
+    IsApto = false;
+    while((fech22<1 || fech22>12) && IsApto == false){ 
+        System.out.println("Porfavor ingrese el mes en nació el cliente");
+        fech2 = entrada.next();
+        IsApto = Validaciones.validarNumero(fech2);
+        if (IsApto){
+            fech22 = Integer.parseInt(fech2);
         }
-        else if(caracter == '1'){
-            resp = true;
-        }
-        else if(caracter == '2'){
-            resp = true;
-        }
-        else if(caracter == '3'){
-            resp = true;
-        }
-        else if(caracter == '4'){
-            resp = true;
-        }
-        else if(caracter  == '5'){
-            resp = true;
-        }
-        else if(caracter == '6'){
-            resp = true;
-        }
-        else if(caracter == '7'){
-            resp = true;
-        }
-        else if(caracter == '8'){
-            resp = true;
-        }
-        else if(caracter == '9'){
-            resp = true;
-        }
-        else{
-            resp = false;
-            break;
+    }    
+    
+    int fech33 = 0;
+    IsApto = false;
+    while((fech33>2008 || fech33<1823) && IsApto == false){ 
+        System.out.println("Porfavor ingrese el año en que nació el cliente");
+        fech3 = entrada.next();
+        IsApto = Validaciones.validarNumero(fech3);
+        if (IsApto){
+            fech33 = Integer.parseInt(fech3);
         }
     }
-    int fech33 = String.valueOf(fech3);
-    while(fech33>2008 || fech33<1823){
-        System.out.println("el año debe ingresado equivale a que tiene una edad no adecuada");
-        System.out.println("Porfavor intentelo nuevamente");
-        fech3= entrada.nextInt();
-    }
-    String sfech1 = Integer.toString(fech11);
-    String sfech2 = Integer.toString(fech22);
-    String sfech3 = Integer.toString(fech33);
-    fech = sfech1+"/"+sfech2+"/"+sfech3;
+    
+    fech = fech1+"/"+fech2+"/"+fech3;
     
     System.out.println("Porfavor ingrese la dirección del domicilio del cliente");
     entrada.nextLine();
@@ -271,104 +119,22 @@ public class clienteMenu {
     System.out.println("Porfavor ingrese la direccion del trabajo del cliente");
     direccion2 = entrada.nextLine();
     
-    while(IsApto == false){
-        System.out.println("Porfavor ingrese el numero de telefono del cliente");
-        String sNumtel = entrada.next();
-        if(sNumtel.length() == 8){
-            IsApto = true;
-            numtel = Integer.parseInt(sNumtel);
-        }
-        boolean resp4 = false;
-        int cant4 = sNumtel.length();
-        for(int i = 0; i < cant4; i++){
-            String caracter = sNumtel.charAt(i);
-            
-            if(caracter == '0'){
-                resp = true;
-            }
-            else if(caracter == '1'){
-                resp = true;
-            }
-            else if(caracter == '2'){
-                resp = true;
-            }
-            else if(caracter == '3'){
-                resp = true;
-            }
-            else if(caracter == '4'){
-                resp = true;
-            }
-            else if(caracter  == '5'){
-                resp = true;
-            }
-            else if(caracter == '6'){
-                resp = true;
-            }
-            else if(caracter == '7'){
-                resp = true;
-            }
-            else if(caracter == '8'){
-                resp = true;
-            }
-            else if(caracter == '9'){
-                resp = true;
-            }
-            else{
-                resp = false;
-                break;
-            }
-        }
-    }
     IsApto = false;
-            
-    while(IsApto == false){
+    while(IsApto == false && sNumtel.length() !=8){ 
+        System.out.println("Porfavor ingrese el numero de telefono del cliente");
+        sNumtel = entrada.next();
+        IsApto = Validaciones.validarNumero(sNumtel);
+    }
+    numtel = Integer.parseInt(sNumtel);
+    
+    IsApto = false;
+    while(IsApto == false && sNit.length() != 9){ 
         System.out.println("Porfavor ingrese el NIT del cliente");
         sNit = entrada.next();
-        if(sNit.length() == 9){
-            IsApto = true;
-            nit = Integer.parseInt(sNit);
-        }
-        boolean resp5 = false;
-        int cant5 = sNit.length();
-        for(int i = 0; i < cant5; i++){
-            String caracter = fech5.charAt(i);
-            
-            if(caracter == '0'){
-                resp = true;
-            }
-            else if(caracter == '1'){
-                resp = true;
-            }
-            else if(caracter == '2'){
-                resp = true;
-            }
-            else if(caracter == '3'){
-                resp = true;
-            }
-            else if(caracter == '4'){
-                resp = true;
-            }
-            else if(caracter  == '5'){
-                resp = true;
-            }
-            else if(caracter == '6'){
-                resp = true;
-            }
-            else if(caracter == '7'){
-                resp = true;
-            }
-            else if(caracter == '8'){
-                resp = true;
-            }
-            else if(caracter == '9'){
-                resp = true;
-            }
-            else{
-                resp = false;
-                break;
-            }
-        }
+        IsApto = Validaciones.validarNumero(sNit);
     }
+    nit = Integer.parseInt(sNit);
+    
         Boolean existsCui = false;
         Boolean existsNit = false;
         existsCui = Validaciones.buscarcui(cui);
@@ -380,13 +146,9 @@ public class clienteMenu {
         else if(existsCui == true){
         
         }else{
-            clientes cli = new clientes(cui, nit, direccion1, trabajo, direccion2, fech, name, ape, numtel, estado);
+            clientes cli = new clientes(cui, nit, direccion1, trabajo, fech, name, ape, numtel, estado);
             clienteArchivo.escribir(cli);
         }
         menuCliente();
-    }
-
-    private static int toString(int fech1) {
-        return 0;
     }
 }
