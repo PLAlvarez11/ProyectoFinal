@@ -27,13 +27,13 @@ public class clienteMenu {
                break;
             case 2:
             System.out.println("Ingrese el cliente que desea buscar");
-            clienteArchivo.buscar();
+            clienteArchivo.buscar(null);
                break;
             case 3:
-            clienteArchivo.cambiar();
+            clienteArchivo.cambiar(null);
                break;
             case 4:
-            clienteArchivo.eliminarRegistro();
+            clienteArchivo.eliminarRegistro(null);
                break;
         }
     }
@@ -121,7 +121,7 @@ public class clienteMenu {
     direccion2 = entrada.nextLine();
     
     IsApto = false;
-    while(IsApto == false && sNumtel.length() !=8){ 
+    while(IsApto == false || sNumtel.length() !=8){ 
         System.out.println("Porfavor ingrese el numero de telefono del cliente");
         sNumtel = entrada.next();
         IsApto = Validaciones.validarNumero(sNumtel);
@@ -129,7 +129,7 @@ public class clienteMenu {
     numtel = Integer.parseInt(sNumtel);
     
     IsApto = false;
-    while(IsApto == false && sNit.length() != 9){ 
+    while(IsApto == false || sNit.length() != 9){ 
         System.out.println("Porfavor ingrese el NIT del cliente");
         sNit = entrada.next();
         IsApto = Validaciones.validarNumero(sNit);
