@@ -15,26 +15,32 @@ public class clienteMenu {
         System.out.println("Consultar Cliente-----------2");
         System.out.println("Editar Cliente--------------3");
         System.out.println("Eliminar Cliente------------4");
+        System.out.println("Volver al menu principal----5");
         
         do{
             System.out.println("\nIngrese la opcion que desea realizar");
             opcion = sc.nextInt();
-        }while(opcion < 0 || opcion > 4);
+        }while(opcion < 0 || opcion > 5);
         
         switch(opcion){
             case 1:
                 agregarCliente();
                break;
             case 2:
-            System.out.println("Ingrese el cliente que desea buscar");
-            clienteArchivo.buscar(null);
+            System.out.println("Ingrese el CUI del cliente que desea buscar");
+            String buscar1 = sc.next();
+            clienteArchivo.buscar(buscar1);
                break;
             case 3:
-            clienteArchivo.cambiar(null);
+            String cambiar1 = "";
+            clienteArchivo.cambiar(cambiar1);
                break;
             case 4:
-            clienteArchivo.eliminarRegistro(null);
+            String eliminar = sc.next();
+            clienteArchivo.eliminarRegistro(eliminar);
                break;
+            case 5:
+            ProyectoFinal.main(null);
         }
     }
     
@@ -150,6 +156,7 @@ public class clienteMenu {
             clientes cli = new clientes(cui, nit, direccion1, trabajo, direccion2, fech, name, ape, numtel, estado);
             clienteArchivo.escribir(cli);
         }
+        System.out.println("Cliente creado con exito");
         menuCliente();
     }
 }

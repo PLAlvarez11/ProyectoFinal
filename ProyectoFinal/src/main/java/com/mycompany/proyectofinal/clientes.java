@@ -87,6 +87,6 @@ public class clientes{
     
     @Override
     public String toString () {
-        return "Cliente: "+name+" "+ape+"nacido en "+fech+" con cui "+cui+" y nit "+nit+" con direccion "+direccion1+" que tiene el oficio de "+trabajo+" ubicado en "+direccion2+"aceptó que podamos contactarlo al "+numtel+" es de estado " +estado+".";
+        return "Cliente: "+name+" "+ape+" nacido en "+fech+" con cui "+cui+" y nit "+nit+" con direccion "+direccion1+" que tiene el oficio de "+trabajo+" ubicado en "+direccion2+" aceptó que podamos contactarlo al "+numtel+" es de estado " +estado+".";
     }
 }

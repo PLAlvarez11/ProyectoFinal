@@ -45,6 +45,7 @@ public class clienteArchivo {
         }catch(Exception e){
             System.out.println("Error de E/S" + e);
         }
+        clienteMenu.menuCliente();
         
     }
     public static void buscar(String nombreBuscar){
@@ -66,7 +67,7 @@ public class clienteArchivo {
                 br.close();
                 fr.close();
                 if (!blnEncontrado){
-                    System.out.println("no existe registro con ese dato" + nombreBuscar);
+                    System.out.println("no existe registro con ese dato *" + nombreBuscar+"*");
                 }
             } else {
                 System.out.println("no existe registro");
@@ -74,6 +75,7 @@ public class clienteArchivo {
             }catch(Exception e){
             System.out.println("Error de E/S" + e);
         }
+        clienteMenu.menuCliente();
     }
     static void eliminarRegistro(String eliminar) {
         Scanner sc = new Scanner(System.in);
@@ -110,14 +112,15 @@ public class clienteArchivo {
         } catch (IOException e) {
             System.out.println("Error: " + e.getMessage());
         }
+        clienteMenu.menuCliente();
     }
     static void cambiar(String cambiardato) {
         Scanner sc = new Scanner(System.in);
         String datoacambiar = "";
         String newdato = "";
         System.out.println("Ingrese el dato del cliente que desea editar");
-        System.out.println("Presione 1 para cambiar nombre");
-        System.out.println("Presione 2 para cambiar apellido");
+        System.out.println("Presione 1 para cambiar los 2 nombres");
+        System.out.println("Presione 2 para cambiar los 2 apellidos");
         System.out.println("Presione 3 para cambiar numero de telefono");
         System.out.println("Presione 4 para cambiar direccion del domicilio");
         System.out.println("Presione 5 para cambiar trabajo");
@@ -128,62 +131,62 @@ public class clienteArchivo {
         int opc = Integer.parseInt(opc1);
         while(opc<1 || opc>8){
             System.out.println("Opcion no valida, intentelo de nuevo");
-            opc1 = sc.next();
+            opc1 = sc.nextLine();
         }
         switch(opc){
             case 1:
-            System.out.print("Porfavor escriba el nombre a cambiar");
+            System.out.print("Porfavor escriba el nombre a cambiar : ");
             datoacambiar = sc.next();
-            System.out.println("Porfavor escriba el nuevo nombre");
+            System.out.println("Porfavor escriba el nuevo nombre : ");
             newdato = sc.next();
             int x = 6;
             break;
             case 2:
-            System.out.print("Porfavor escriba el apellido a cambiar");
+            System.out.print("Porfavor escriba el apellido a cambiar : ");
             datoacambiar = sc.next();
-            System.out.println("Porfavor escriba el nuevo apellido");
+            System.out.println("Porfavor escriba el nuevo apellido : ");
             newdato = sc.next();
             x = 7;
             break;
             case 3:
-            System.out.print("Porfavor escriba el numero telefonico a cambiar");
+            System.out.print("Porfavor escriba el numero telefonico a cambiar : ");
             datoacambiar = sc.next();
-            System.out.println("Porfavor escriba el nuevo numero telefonico");
+            System.out.println("Porfavor escriba el nuevo numero telefonico : ");
             newdato = sc.next();
             x = 8;
             break;
             case 4:
-            System.out.print("Porfavor escriba el direccion del domicilio a cambiar");
+            System.out.print("Porfavor escriba el direccion del domicilio a cambiar : ");
             datoacambiar = sc.next();
-            System.out.println("Porfavor escriba el nuevo domicilio");
+            System.out.println("Porfavor escriba el nuevo domicilio : ");
             newdato = sc.next();
             x = 2;
             break;
             case 5:
-            System.out.print("Porfavor escriba el trabajo a cambiar");
+            System.out.print("Porfavor escriba el trabajo a cambiar : ");
             datoacambiar = sc.next();
-            System.out.println("Porfavor escriba el nuevo trabajo");
+            System.out.println("Porfavor escriba el nuevo trabajo : ");
             newdato = sc.next();
             x = 3;
             break;
             case 6:
-            System.out.print("Porfavor escriba el direccion del trabajo a cambiar");
+            System.out.print("Porfavor escriba el direccion del trabajo a cambiar : ");
             datoacambiar = sc.next();
-            System.out.println("Porfavor escriba el nuevo domicilio laboral");
+            System.out.println("Porfavor escriba el nuevo domicilio laboral : ");
             newdato = sc.next();
             x = 4;
             break;
             case 7:
-            System.out.print("Porfavor escriba el cui a cambiar");
+            System.out.print("Porfavor escriba el cui a cambiar : ");
             datoacambiar = sc.next();
-            System.out.println("Porfavor escriba el nuevo cui");
+            System.out.println("Porfavor escriba el nuevo cui : ");
             newdato = sc.next();
             x = 0;
             break;
             case 8:
-            System.out.print("Porfavor escriba el nit a cambiar");
+            System.out.print("Porfavor escriba el nit a cambiar : ");
             datoacambiar = sc.next();
-            System.out.println("Porfavor escriba el nuevo nit");
+            System.out.println("Porfavor escriba el nuevo nit : ");
             newdato = sc.next();
             x = 1;
             break;
@@ -210,7 +213,7 @@ public class clienteArchivo {
                     }
                     for (int j = 0; j < arreglo.length; j++){
                         String nuevodato[] = arreglo[j].split("%");
-                        if (nuevodato[j].equalsIgnoreCase(datoacambiar)){
+                        if (nuevodato[x].equalsIgnoreCase(datoacambiar)){
                             nuevalinea = arreglo[j].replace(datoacambiar, newdato);
                             bw.newLine();
                             bw.write(nuevalinea);
@@ -236,5 +239,6 @@ public class clienteArchivo {
         } catch (IOException e) {
             System.out.println("Error: " + e.getMessage());
         }
+        clienteMenu.menuCliente();
     }
 }
