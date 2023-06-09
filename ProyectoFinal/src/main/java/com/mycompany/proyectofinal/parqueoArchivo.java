@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Scanner;
 
 public class parqueoArchivo {
     public static void escribirArchivos(parqueos parqueo){
@@ -220,4 +221,226 @@ public class parqueoArchivo {
                 System.out.println("Error de E/S "+ e);   
             }
         }
+    public void modificarDatos (String modificarDatos){
+    	try {
+            File f = new File("parqueos.txt");
+            if (f.exists()){
+                FileReader fr = new FileReader(f);
+                BufferedReader br = new BufferedReader (fr) ;
+                String linea;
+                int numeroLineas=0;
+                
+                while((linea = br.readLine()) !=null){
+                    numeroLineas++;
+                }
+                String contacto[] = new String[numeroLineas];
+                
+                br.close();
+                fr.close();
+                br = new BufferedReader(new FileReader(f));
+                int i=0;
+                
+                while ((linea=br.readLine())!=null){
+                    contacto[i] = linea;
+                    i++;
+                }
+                
+                br.close(); 
+                fr.close();
+                FileWriter fw = new FileWriter(f);
+                BufferedWriter bw = new BufferedWriter (fw);
+                boolean eliminado = false;
+                boolean primerlinea = true;
+                
+                for (int j = 0; j < contacto.length; j++){
+                    String nuevalinea[] = contacto[j].split ("%");
+                    if (nuevalinea[0].equalsIgnoreCase (modificarDatos) ){
+                    	System.out.println("Numero de parqueo a modificar");
+                    	Scanner sc = new Scanner (System.in);
+                    	String numP = sc.next();
+                    	System.out.println("Numero de placa");
+                    	String placc = sc.next();
+                    	System.out.println("Numero de NIT");
+                    	String numN = sc.next();
+                    	System.out.println("Fecha");
+                    	String fechh = sc.next();
+                        String nuevaLinea =  contacto[j].replace(contacto[j],numP+"%"+placc+"%"+numN+"%"+fechh);
+                        bw.newLine();
+                        bw.write(nuevaLinea);
+                        eliminado = true;
+                        System.out.println("Registro Modificado!");
+                    } else {
+                        if (primerlinea == true){
+                            bw.write (contacto[j]);
+                            primerlinea = false;
+                        } else{
+                            bw.newLine();
+                            bw.write (contacto [j]);
+                        }
+                    }
+                }
+
+                if (eliminado==false){
+                    System.out.println("No se encontro registro.");
+                }
+                bw.close();
+                fw.close();
+
+            } else{
+                System.out.println("No hay registros que eliminar.");
+            }
+        } 
+        
+        catch (Exception e){
+            System.out.println("Error de E/S "+ e);   
+        }
+    }
+    public void modificarDatos (String modificarDatos){
+    	try {
+            File f = new File("parqueos.txt");
+            if (f.exists()){
+                FileReader fr = new FileReader(f);
+                BufferedReader br = new BufferedReader (fr) ;
+                String linea;
+                int numeroLineas=0;
+                
+                while((linea = br.readLine()) !=null){
+                    numeroLineas++;
+                }
+                String contacto[] = new String[numeroLineas];
+                
+                br.close();
+                fr.close();
+                br = new BufferedReader(new FileReader(f));
+                int i=0;
+                
+                while ((linea=br.readLine())!=null){
+                    contacto[i] = linea;
+                    i++;
+                }
+                
+                br.close(); 
+                fr.close();
+                FileWriter fw = new FileWriter(f);
+                BufferedWriter bw = new BufferedWriter (fw);
+                boolean eliminado = false;
+                boolean primerlinea = true;
+                
+                for (int j = 0; j < contacto.length; j++){
+                    String nuevalinea[] = contacto[j].split ("%");
+                    if (nuevalinea[0].equalsIgnoreCase (modificarDatos) ){
+                    	System.out.println("Numero de parqueo a modificar");
+                    	Scanner sc = new Scanner (System.in);
+                    	String numP = sc.next();
+                    	System.out.println("Numero de placa");
+                    	String placc = sc.next();
+                    	System.out.println("Numero de NIT");
+                    	String numN = sc.next();
+                    	System.out.println("Fecha");
+                    	String fechh = sc.next();
+                        String nuevaLinea =  contacto[j].replace(contacto[j],numP+"%"+placc+"%"+numN+"%"+fechh);
+                        bw.newLine();
+                        bw.write(nuevaLinea);
+                        eliminado = true;
+                        System.out.println("Registro Modificado!");
+                    } else {
+                        if (primerlinea == true){
+                            bw.write (contacto[j]);
+                            primerlinea = false;
+                        } else{
+                            bw.newLine();
+                            bw.write (contacto [j]);
+                        }
+                    }
+                }
+
+                if (eliminado==false){
+                    System.out.println("No se encontro registro.");
+                }
+                bw.close();
+                fw.close();
+
+            } else{
+                System.out.println("No hay registros que eliminar.");
+            }
+        } 
+        
+        catch (Exception e){
+            System.out.println("Error de E/S "+ e);   
+        }
+    }
+    public void ingresarDatos (String ingresarDatos){
+    	try {
+            File f = new File("parqueos.txt");
+            if (f.exists()){
+                FileReader fr = new FileReader(f);
+                BufferedReader br = new BufferedReader (fr) ;
+                String linea;
+                int numeroLineas=0;
+                
+                while((linea = br.readLine()) !=null){
+                    numeroLineas++;
+                }
+                String contacto[] = new String[numeroLineas];
+                
+                br.close();
+                fr.close();
+                br = new BufferedReader(new FileReader(f));
+                int i=0;
+                
+                while ((linea=br.readLine())!=null){
+                    contacto[i] = linea;
+                    i++;
+                }
+                
+                br.close(); 
+                fr.close();
+                FileWriter fw = new FileWriter(f);
+                BufferedWriter bw = new BufferedWriter (fw);
+                boolean eliminado = false;
+                boolean primerlinea = true;
+                for (int j = 0; j < contacto.length; j++){
+                    String nuevalinea[] = contacto[j].split ("%");
+                    if (nuevalinea[0].equalsIgnoreCase (ingresarDatos) ){
+                    	Scanner sc = new Scanner (System.in);
+                    	System.out.println("Ingrese numero de parqueo");
+                    	String numPar = sc.next();
+                    	System.out.println("Numero de placa");
+                    	String numPlaca = sc.next();
+                    	System.out.println("Numero de NIT");
+                    	String numN = sc.next();
+                    	System.out.println("Fecha");
+                    	String Fecha = sc.next();
+                        String nuevaLinea =  contacto[j].replace(contacto[j],numPar+"%"+numPlaca+"%"+numN+"%"+Fecha);
+                        
+                        bw.newLine();
+                        bw.write(nuevaLinea);
+                        eliminado = true;
+                        System.out.println("Ingreso los datos correctamente");
+                    } else {
+                        if (primerlinea == true){
+                            bw.write (contacto[j]);
+                            primerlinea = false;
+                        } else{
+                            bw.newLine();
+                            bw.write (contacto [j]);
+                        }
+                    }
+                }
+
+                if (eliminado==false){
+                    System.out.println("No se encontro registro.");
+                }
+                bw.close();
+                fw.close();
+
+            } else{
+                System.out.println("No hay registros que eliminar.");
+            }
+        } 
+        
+        catch (Exception e){
+            System.out.println("Error de E/S "+ e);   
+        }
+    }
 }

@@ -16,16 +16,9 @@ public class parqueoMenu {
             
             switch(opcion){
                 case 1:
-                    System.out.println("ingrese numero de Parqueo");
-                    String numPar = sc.next();
-                    System.out.println("ingrese numero de Placa");
-                    String numPlaca = sc.next();
-                    System.out.println("ingrese numero de NIT");
-                    String numN = sc.next();
-                    System.out.println("ingrese la fecha de registro");
-                    String Fecha = sc.next();
-                    parqueos dat = new parqueos(numPar, numPlaca, numN, Fecha);
-                    parqueoArchivo.escribirArchivos(dat);
+                	System.out.println("_____NUMERO DE PARQUEO_____");
+                	String ingresarDatos = sc.next();
+                    archivo.ingresarDatos(ingresarDatos);
                 break;
                 case 2:
                 	System.out.println("__________DATOS__________");
@@ -33,6 +26,8 @@ public class parqueoMenu {
                 break;
                 case 3:
                 	System.out.println("_____MODIFIAR PARQUEO_____");
+                	String modificarDatos = sc.next();
+                    archivo.modificarDatos(modificarDatos);
                 break;
                 case 4:
                 	System.out.println("_____LIMPIAR PARQUEO_____");
@@ -80,15 +75,15 @@ public class parqueoMenu {
     
     public static void menuParqueo() {
         System.out.println("*   *   *   *   *   *   *"); 
-        System.out.println("  *   *   Parqueo    *   ");
+        System.out.println("  *   *   Parqueo *   *  ");
         System.out.println("*   *   *   *   *   *   *");  
         System.out.println("-------------------------"); 
-        System.out.println("Ingresar Parqueo---------1 ");   
-        System.out.println("Mostrar Parqueo----------2 ");
-        System.out.println("Modificar Parqueo--------3 ");
-        System.out.println("Limpiar Parqueo----------4 ");
-        System.out.println("Buscar Parqueo-----------5 ");
-        System.out.println("Salir del programa-------6 "); 
+        System.out.println("Ingresar Parqueo--------1");   
+        System.out.println("Mostrar Parqueo---------2");
+        System.out.println("Modificar Parqueo-------3");
+        System.out.println("Limpiar Parqueo---------4");
+        System.out.println("Buscar Parqueo----------5");
+        System.out.println("Salir del programa------6"); 
         System.out.println("-------------------------");
     }
 }

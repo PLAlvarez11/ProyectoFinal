@@ -1,5 +1,4 @@
 package com.mycompany.proyectofinal;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -16,11 +15,11 @@ public class clienteArchivo {
                 fw = new FileWriter(f, true);
                 bw = new BufferedWriter(fw);
                 bw.newLine();
-                bw.write(cliente.GetCui()+"%"+cliente.GetNit()+"%"+cliente.GetDireccion1()+"%"+cliente.GetTrabajo()+"%"+cliente.GetDireccion2()+"%"+cliente.GetFech()+"%"+cliente.GetName()+"%"+cliente.GetApe()+"%"+cliente.GetNum()+"%"+cliente.GetEstado());                
+                bw.write(cliente.GetCui()+"%"+cliente.GetNit()+"%"+cliente.GetDireccion()+"%"+cliente.GetTrabajo()+"%"+cliente.GetFech()+"%"+cliente.GetName()+"%"+cliente.GetApe()+"%"+cliente.GetNum()+"%"+cliente.GetEstado());                
             } else {
                 fw = new FileWriter(f);
                 bw = new BufferedWriter(fw);
-                bw.write(cliente.GetCui()+"%"+cliente.GetNit()+"%"+cliente.GetDireccion1()+"%"+cliente.GetTrabajo()+cliente.GetDireccion2()+"%"+cliente.GetFech()+"%"+cliente.GetName()+"%"+cliente.GetApe()+"%"+cliente.GetNum()+"%"+cliente.GetEstado());                                
+                bw.write(cliente.GetCui()+"%"+cliente.GetNit()+"%"+cliente.GetDireccion()+"%"+cliente.GetTrabajo()+"%"+cliente.GetFech()+"%"+cliente.GetName()+"%"+cliente.GetApe()+"%"+cliente.GetNum()+"%"+cliente.GetEstado());                                
             }
             bw.close();
             fw.close();
@@ -28,7 +27,7 @@ public class clienteArchivo {
             System.out.println("Error de E/S" + e);
         }
     }
-    public static void mostrar(){
+    public void mostrar(){
         try{
             File f = new File("clientes.txt");
             if (f.exists()){
@@ -37,7 +36,7 @@ public class clienteArchivo {
                 String linea;
                 while((linea=br.readLine())!=null){
                     String[] arreglo = linea.split("%");
-                    clientes cliente = new clientes(arreglo[0], Integer.parseInt(arreglo[1]), arreglo[2], arreglo[3], arreglo[4], arreglo[5], arreglo[6], arreglo[7], Integer.parseInt(arreglo[8]), Integer.parseInt(arreglo[9]));
+                    clientes cliente = new clientes(arreglo[0], Integer.parseInt(arreglo[1]), arreglo[2], arreglo[3], arreglo[4], arreglo[5], arreglo[6], Integer.parseInt(arreglo[7]), Integer.parseInt(arreglo[8]));
                     System.out.println(cliente.toString());
                 }
             }
@@ -46,7 +45,7 @@ public class clienteArchivo {
         }
         
     }
-    public static void buscar(String nombreBuscar){
+    public void buscar(String nombreBuscar){
         try{
             File f = new File ("clientes.txt");
             if(f.exists()){
@@ -74,7 +73,7 @@ public class clienteArchivo {
             System.out.println("Error de E/S" + e);
         }
     }
-    public static void eliminarRegistro(String eliminar) {
+    static void eliminarRegistro(String eliminar) {
         Scanner sc = new Scanner(System.in);
         System.out.print("Ingrese el CUI del cliente a eliminar:");
         String cui = sc.nextLine();
@@ -110,7 +109,7 @@ public class clienteArchivo {
             System.out.println("Error: " + e.getMessage());
         }
     }
-    public static void cambiar(String cambiardato) {
+    static void cambiar(String cambiardato) {
         Scanner input = new Scanner(System.in);
         String datoacambiar = "";
         String newdato = "";
