@@ -4,6 +4,8 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
 
 public class clienteArchivo {
     public static void escribir(clientes cliente){
@@ -15,11 +17,11 @@ public class clienteArchivo {
                 fw = new FileWriter(f, true);
                 bw = new BufferedWriter(fw);
                 bw.newLine();
-                bw.write(cliente.GetCui()+"%"+cliente.GetNit()+"%"+cliente.GetDireccion()+"%"+cliente.GetTrabajo()+"%"+cliente.GetFech()+"%"+cliente.GetName()+"%"+cliente.GetApe()+"%"+cliente.GetNum()+"%"+cliente.GetEstado());                
+                bw.write(cliente.GetCui()+"%"+cliente.GetNit()+"%"+cliente.GetDireccion1()+"%"+cliente.GetTrabajo()+"%"+cliente.GetDireccion2()+"%"+cliente.GetFech()+"%"+cliente.GetName()+"%"+cliente.GetApe()+"%"+cliente.GetNum()+"%"+cliente.GetEstado());                
             } else {
                 fw = new FileWriter(f);
                 bw = new BufferedWriter(fw);
-                bw.write(cliente.GetCui()+"%"+cliente.GetNit()+"%"+cliente.GetDireccion()+"%"+cliente.GetTrabajo()+"%"+cliente.GetFech()+"%"+cliente.GetName()+"%"+cliente.GetApe()+"%"+cliente.GetNum()+"%"+cliente.GetEstado());                                
+                bw.write(cliente.GetCui()+"%"+cliente.GetNit()+"%"+cliente.GetDireccion1()+"%"+cliente.GetTrabajo()+"%"+cliente.GetDireccion2()+"%"+cliente.GetFech()+"%"+cliente.GetName()+"%"+cliente.GetApe()+"%"+cliente.GetNum()+"%"+cliente.GetEstado());                                
             }
             bw.close();
             fw.close();
@@ -36,7 +38,7 @@ public class clienteArchivo {
                 String linea;
                 while((linea=br.readLine())!=null){
                     String[] arreglo = linea.split("%");
-                    clientes cliente = new clientes(arreglo[0], Integer.parseInt(arreglo[1]), arreglo[2], arreglo[3], arreglo[4], arreglo[5], arreglo[6], Integer.parseInt(arreglo[7]), Integer.parseInt(arreglo[8]));
+                    clientes cliente = new clientes(arreglo[0], Integer.parseInt(arreglo[1]), arreglo[2], arreglo[3], arreglo[4], arreglo[5], arreglo[6], arreglo[7], Integer.parseInt(arreglo[8]), Integer.parseInt(arreglo[9]));
                     System.out.println(cliente.toString());
                 }
             }
@@ -45,7 +47,7 @@ public class clienteArchivo {
         }
         
     }
-    public void buscar(String nombreBuscar){
+    public static void buscar(String nombreBuscar){
         try{
             File f = new File ("clientes.txt");
             if(f.exists()){
@@ -56,7 +58,7 @@ public class clienteArchivo {
                 while ((linea=br.readLine())!=null){
                     String [] arreglo = linea.split("%");
                     if (arreglo[0].equalsIgnoreCase(nombreBuscar)){
-                        clientes cliente = new clientes(arreglo[0], Integer.parseInt(arreglo[1]), arreglo[2], arreglo[3], arreglo[4], arreglo[5], arreglo[6], Integer.parseInt(arreglo[7]), Integer.parseInt(arreglo[8]));
+                        clientes cliente = new clientes(arreglo[0], Integer.parseInt(arreglo[1]), arreglo[2], arreglo[3], arreglo[4], arreglo[5], arreglo[6], arreglo[7], Integer.parseInt(arreglo[8]), Integer.parseInt(arreglo[9]));
                         System.out.println(cliente.toString());
                         blnEncontrado=true;
                     }
@@ -110,7 +112,7 @@ public class clienteArchivo {
         }
     }
     static void cambiar(String cambiardato) {
-        Scanner input = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         String datoacambiar = "";
         String newdato = "";
         System.out.println("Ingrese el dato del cliente que desea editar");
@@ -196,19 +198,19 @@ public class clienteArchivo {
                 try (BufferedReader br = new BufferedReader(fr)) {
                     String line = "";
                     encontrado = false;
-                    while((line = br.readLine() != null)){
+                    while((line = br.readLine()) != null){
                         numerodelineas++;
                     }
                     String arreglo[] = new String[numerodelineas];
                     int i = 0;
                     String nuevalinea = "";
-                    while((linea = br.readLine())!=null){
+                    while((line = br.readLine())!=null){
                         arreglo[i] = line;
                         i++;
                     }
-                    for (int j = 0; j < arreglo.lenght; j++){
+                    for (int j = 0; j < arreglo.length; j++){
                         String nuevodato[] = arreglo[j].split("%");
-                        if (nuevodato[x].equalsIgnoreCase(datoacambiar)){
+                        if (nuevodato[j].equalsIgnoreCase(datoacambiar)){
                             nuevalinea = arreglo[j].replace(datoacambiar, newdato);
                             bw.newLine();
                             bw.write(nuevalinea);
@@ -219,12 +221,12 @@ public class clienteArchivo {
                             bw.newLine();
                         }
                     }
+                    br.close();
+                    fr.close();
+                    bw.close();
+                    fw.close();
                 }
             }
-            br.close();
-            fr.close();
-            bw.close();
-            fw.close();
             if (!encontrado) {
                 System.out.println("No se encontro ningun registro con el dato especificado.");
             } else {

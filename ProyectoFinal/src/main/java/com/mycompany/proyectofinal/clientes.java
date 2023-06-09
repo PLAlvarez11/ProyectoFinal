@@ -37,7 +37,7 @@ public class clientes{
         return this.nit;
     }
     public void SetDireccion1(String direccion1){
-        this.direccion=direccion1;
+        this.direccion1=direccion1;
     }
     public String GetDireccion1(){
         return this.direccion1;
